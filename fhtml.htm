@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registration</title>
+    <link rel="stylesheet" href="fstyle.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <form action="" name="formfill" onsubmit="return validation()">
+                <h2>Register</h2>
+                <p id="result">head</p>
+                <div class="input-box">
+                <i class='bx bxs-user'></i>
+                    <input type="text" name="Username" placeholder="username">
+                </div>
+                <div class="input-box">
+                    <i class='bx bxs-envelope' ></i>
+                    <input type="email" name="Email" placeholder="email">
+                </div>
+                <div class="input-box">
+                    <i class='bx bxs-lock-alt' ></i>
+                    <input id="password" type="password" name="password" placeholder="password">
+                </div>
+                <div class="input-box">
+                    <i class='bx bxs-lock-alt' ></i>
+                    <input type="password" name="Cpassword" placeholder="Confirm password">
+                </div>
+                <div>
+                    <button type="submit" class="btn" onclick="openpopup()">submit</button>
+                    <div class="popup" id="popup">
+                        <img src="tickk.png">
+                        <p><b>Thank you!</b></p>
+                        <p>Your details has been successfully submitted.Thanks!</p>
+                        <button type="button" onclick="closepopup()">OK</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+<script>
+                 let popup=document.getElementById("popup");
+                 function validation(){
+                    if(document.formfill.Username.value==""){
+                        document.getElementById("result").innerHTML="Enter Username*";
+                        return false;
+                    }
+                    else if(document.formfill.Username.value.length<6){
+                        document.getElementById("result").innerHTML="Username must be 6 letters*";
+                        return false;
+                    }
+                    else if(document.formfill.Email.value==""){
+                        document.getElementById("result").innerHTML="Enter your Email*";
+                        return false;
+                    }
+                    else if(document.formfill.password.value==""){
+                        document.getElementById("result").innerHTML="Enter your password*";
+                        return false;
+                    }
+                    else if(document.formfill.password.value.length<6){
+                        document.getElementById("result").innerHTML="password must be 6-digits*";
+                        return false;
+                    }
+                    else if(document.formfill.Cpassword.value==""){
+                        document.getElementById("result").innerHTML="Enter confirm password*";
+                        return false;
+                    }
+                    else if(document.formfill.Cpassword.value !== document.formfill.password.value){
+                        document.getElementById("result").innerHTML="password doesn't matched*";
+                        return false;
+                    }
+                    else if(document.formfill.password.value == document.formfill.Cpassword.value){
+                        popup.classList.add("open-popup")
+                        return false;
+                    }
+                 }
+                 function closepopup(){
+                    popup.classList.remove("open-popup");
+                 }
+                </script>
+    
+</body>
+</html>
